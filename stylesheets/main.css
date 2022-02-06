@@ -1,0 +1,47 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    text-align: center;
+}
+
+td {
+    border: 5px solid black;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.word_cell_blank {
+    /* just border */
+    background-color: rgb(211, 211, 211);
+}
+
+.word_cell_solved {
+    /* green */
+    background-color: rgb(79, 195, 89);
+}
+
+.word_cell_wrong {
+    /* grey */
+    background-color: rgb(214, 124, 124);
+}
+
+.word_cell_hint {
+    /* yellow */
+    background-color: rgb(240, 228, 64);
+}
+
+.kb_btn_alpha{
+    width: 40px;
+    height: 40px;
+}
+
+.kb_btn_enter{
+    width: 80px;
+    height: 40px;
+}
+
+.kb_btn_backspace{
+    width: 60px;
+    height: 40px;
+}
