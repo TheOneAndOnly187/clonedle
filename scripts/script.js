@@ -13,6 +13,9 @@ let guess_count = 1;
 let gameOver = false;
 const max_guess_count = 6;
 
+let incorrectLetters = [];
+let hintLetters = [];
+let solvedLetters = [];
 /*
     TODO: 
         POLISH
@@ -98,12 +101,18 @@ function checkGuess(guess) {
         letterCount.set(c, word.match(reg).length)
     }
 
-    for (let i = 0; i < word.length; i++) {
+    for (let i = 0; i < word.length; i++) {       
+        document.getElementById("kb_"+guess[i]).className = "kb_btn_alpha word_cell_wrong";
+    }
+
+    for (let i = 0; i < word.length; i++) {        
         if (word[i] == guess[i]) {
             check[i] = "solved";
 
             console.log("match found");
             letterCount.set(guess[i], letterCount.get(guess[i]) - 1);
+
+            document.getElementById("kb_"+guess[i]).className += "kb_btn_alpha word_cell_solved";
         }
     }
 
@@ -113,6 +122,8 @@ function checkGuess(guess) {
 
         if (word.includes(guess[i]) && letterCount.get(guess[i]) > 0) {
             check[i] = "hint";
+
+            document.getElementById("kb_"+guess[i]).className += "kb_btn_alpha word_cell_hint";
         }
     }
 
@@ -205,6 +216,18 @@ function checkWin() {
     if (current_guess.toUpperCase() == word.toUpperCase()) {
         // other stuff here (end game screen...)
         gameOver = true;
-        alert("You Win");
+        displayWinScreen("You Win");
     }
+}
+
+function displayWinScreen(text) {
+    document.getElementById("win_overlay").style.display = "block";
+    document.getElementById("win_screen").innerHTML = text 
+    + '<button id="play_again_btn">Close</button>'
+
+    document.getElementById("play_again_btn").addEventListener("click", hideWinScreen);
+}
+
+function hideWinScreen() {
+    document.getElementById("win_overlay").style.display = "none";
 }

@@ -1,10 +1,22 @@
-document.addEventListener("keydown", keyEventTest);
+document.getElementById("change_Yellow").addEventListener("click", changeYellow);
+document.getElementById("change_Red").addEventListener("click", changeRed);
+document.getElementById("change_Green").addEventListener("click", changeGreen);
 
-function keyEventTest(event) {
-    console.log(event.key);
+function changeRed() {
+    let letter = document.getElementById("input").value.toUpperCase();
+
+    document.getElementById("kb_"+letter).className = "kb_btn_alpha word_cell_wrong";
 }
 
-let word = "Hello";
-console.log(word);
-word = word.substring(0, word.length -1);
-console.log(word);
+function changeYellow() {
+    let letter = document.getElementById("input").value.toUpperCase();
+
+    document.getElementById("kb_"+letter).className += "kb_btn_alpha word_cell_hint";
+}
+
+function changeGreen() {
+    let letter = document.getElementById("input").value.toUpperCase();
+
+    document.getElementById("kb_"+letter).className += "kb_btn_alpha word_cell_solved";
+}
+
